@@ -65,6 +65,12 @@ The integration tests run in your current VS Code instance, which makes testing 
 
 ## Release Notes
 
+### 1.1.1
+
+- Updated minimum VS Code version requirement to 1.38.0
+- Added tests
+- Added logo
+
 ### 1.1.0
 
 - Added support for `.splitignore` file to exclude files and folders
