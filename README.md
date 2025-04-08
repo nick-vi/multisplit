@@ -10,7 +10,7 @@ This extension adds a context menu option when right-clicking on files or folder
 
 ## Requirements
 
-- Visual Studio Code 1.80.0 or higher
+- Visual Studio Code 1.38.0 or higher
 
 ## Usage
 
