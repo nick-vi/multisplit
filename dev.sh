@@ -74,24 +74,40 @@ function package_extension() {
     # Create dist directory if it doesn't exist
     mkdir -p $VSIX_DIR
 
-    # Package to the dist directory
-    pnpm exec vsce package -o $VSIX_DIR/
+    # Get version from package.json
+    VERSION=$(grep '"version":' package.json | head -1 | cut -d '"' -f 4)
+    PUBLISHER=$(grep '"publisher":' package.json | cut -d '"' -f 4)
+    NAME=$(grep '"name":' package.json | head -1 | cut -d '"' -f 4)
+
+    # Expected output file
+    OUTPUT_FILE="$VSIX_DIR/${NAME}-${VERSION}.vsix"
+
+    echo_color "yellow" "Packaging version $VERSION to $OUTPUT_FILE"
+
+    # Use a more direct approach with vsce
+    pnpm exec vsce package --no-dependencies -o "$OUTPUT_FILE"
 
     if [ $? -ne 0 ]; then
         echo_color "red" "❌ Packaging failed!"
-        exit 1
+        echo_color "yellow" "Trying alternative packaging method..."
+
+        # Try with --no-yarn option
+        pnpm exec vsce package --no-dependencies --no-yarn -o "$OUTPUT_FILE"
+
+        if [ $? -ne 0 ]; then
+            echo_color "red" "❌ All packaging attempts failed!"
+            exit 1
+        fi
     fi
 
-    # Find the newly created VSIX file
-    VSIX_FILE=$(find $VSIX_DIR -name "$VSIX_PATTERN" -type f -print -quit)
-
-    if [ -z "$VSIX_FILE" ]; then
-        echo_color "red" "❌ Failed to find packaged VSIX file!"
+    # Verify the file exists
+    if [ ! -f "$OUTPUT_FILE" ]; then
+        echo_color "red" "❌ Failed to find packaged VSIX file: $OUTPUT_FILE"
         exit 1
     fi
 
     # Get the absolute path
-    ABSOLUTE_PATH="$(cd "$(dirname "$VSIX_FILE")" && pwd)/$(basename "$VSIX_FILE")"
+    ABSOLUTE_PATH="$(cd "$(dirname "$OUTPUT_FILE")" && pwd)/$(basename "$OUTPUT_FILE")"
 
     echo_color "green" "✅ Extension packaged: $ABSOLUTE_PATH"
     # Return the absolute path
