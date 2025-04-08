@@ -1,0 +1,19 @@
+.vscode/**
+.vscode-test/**
+src/**
+.gitignore
+.yarnrc
+.splitignore
+vsc-extension-quickstart.md
+**/tsconfig.json
+**/.eslintrc.json
+**/*.map
+**/*.ts
+node_modules/**
+!node_modules/ignore/**
+dev.sh
+pnpm-lock.yaml
+test-folder/**
+
+# Make sure to include the logo
+!multisplit-logo.png

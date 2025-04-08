@@ -1,0 +1,18 @@
+# Sample .splitignore file for MultiSplit extension
+
+# Ignore node_modules directory
+node_modules/
+
+# Ignore all .log files
+*.log
+
+# Ignore all .map files
+*.map
+
+# Ignore specific files
+.gitignore
+.vscodeignore
+pnpm-lock.yaml
+
+# Ignore out directory
+out/

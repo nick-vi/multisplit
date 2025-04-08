@@ -1,0 +1,67 @@
+{
+  "name": "multisplit",
+  "displayName": "MultiSplit",
+  "description": "Open multiple files in a grid layout from the explorer context menu",
+  "version": "1.1.0",
+  "icon": "multisplit-logo-rounded.png",
+  "engines": {
+    "vscode": "^1.99.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.openInSplitView",
+        "title": "Open in Split View"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "extension.openInSplitView",
+          "group": "split-view"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "pnpm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "pnpm run compile",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js",
+    "test:unit": "mocha -r ts-node/register 'src/test/unit/**/*.test.ts'",
+    "clean": "./dev.sh clean",
+    "build": "./dev.sh build",
+    "package": "./dev.sh package",
+    "install-ext": "./dev.sh install",
+    "reload": "./dev.sh reload",
+    "dev": "./dev.sh dev"
+  },
+  "keywords": [],
+  "author": "nick-vi",
+  "publisher": "nick-vi",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nick-vi/multisplit.git"
+  },
+  "license": "MIT",
+  "packageManager": "pnpm@10.7.1",
+  "devDependencies": {
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "^22.14.0",
+    "@types/vscode": "^1.99.0",
+    "@vscode/vsce": "^3.3.2",
+    "glob": "^10.3.10",
+    "mocha": "^10.3.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {}
+}
