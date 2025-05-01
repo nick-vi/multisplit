@@ -6,7 +6,7 @@ A Visual Studio Code extension that adds a context menu option to open multiple 
 
 This extension adds a context menu option when right-clicking on files or folders in the Explorer:
 
-**Open in Split View**: Opens the selected file(s) in a grid layout in the current window. If a folder is selected, all files within that folder (including nested files) will be opened in a grid arrangement optimized for the number of files. The extension limits the maximum number of files to 16 to ensure good performance and usability.
+**Open in Split View**: Opens the selected file(s) in a grid layout in the current window. If a folder is selected, all files within that folder (including nested files) will be opened in a grid arrangement optimized for the number of files. The extension limits the maximum number of files to 32 to ensure good performance and usability.
 
 ## Requirements
 
@@ -40,7 +40,7 @@ This extension does not add any settings.
 
 ## Known Issues
 
-- The extension limits the number of files to 16 to maintain performance. Use `.splitignore` to filter unwanted files if you need to work with large directories.
+- The extension limits the number of files to 32 to maintain performance. Use `.splitignore` to filter unwanted files if you need to work with large directories.
 
 ## Development
 
@@ -74,7 +74,7 @@ The integration tests run in your current VS Code instance, which makes testing 
 ### 1.1.0
 
 - Added support for `.splitignore` file to exclude files and folders
-- Limited the maximum number of files to 16 for better performance
+- Limited the maximum number of files to 32 for better performance
 
 ### 1.0.0
 
