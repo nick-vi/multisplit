@@ -65,6 +65,10 @@ The integration tests run in your current VS Code instance, which makes testing 
 
 ## Release Notes
 
+### 1.1.2
+
+- Increased the maximum number of files to 32 from 16
+
 ### 1.1.1
 
 - Updated minimum VS Code version requirement to 1.38.0

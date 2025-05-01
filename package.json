@@ -2,7 +2,7 @@
   "name": "multisplit",
   "displayName": "MultiSplit",
   "description": "Open multiple files in a grid layout from the explorer context menu",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "icon": "multisplit-logo-rounded.png",
   "engines": {
     "vscode": "^1.38.0"
